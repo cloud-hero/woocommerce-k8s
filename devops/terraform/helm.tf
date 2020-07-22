@@ -67,3 +67,13 @@ resource "helm_release" "filebeat" {
     google_container_node_pool.primary_nodes,
   ]
 }
+
+resource "helm_release" "woocommerce" {
+  name  = "woocommerce"
+  chart = "bitnami/wordpress"
+  values = [file("helm/values-wordpress.yaml")]
+
+  depends_on = [
+    google_container_node_pool.primary_nodes,
+  ]
+}

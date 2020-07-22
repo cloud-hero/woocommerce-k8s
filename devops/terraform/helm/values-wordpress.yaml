@@ -1,0 +1,35 @@
+image:
+  registry: docker.io
+  repository: cloudhero/woocommerce
+  tag: 4.3.0
+
+wordpressUsername: wordpress
+wordpressPassword: wordpress
+wordpressEmail: user@cloudhero.io
+wordpressFirstName: The
+wordpressLastName: CloudHero
+wordpressBlogName: CloudHero's Blog!
+
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+
+persistence:
+  enabled: true
+  storageClass: "nfs"
+  accessMode: ReadWriteMany
+  size: 1Gi
+
+mariadb:
+  enabled: false
+
+externalDatabase:
+  host: mysql
+  user: wordpress
+  password: "wordpress"
+  database: wordpress
+
+metrics:
+  enabled: true

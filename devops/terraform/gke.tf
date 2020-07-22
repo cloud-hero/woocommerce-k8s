@@ -72,6 +72,10 @@ resource "google_container_node_pool" "primary_nodes" {
   }
 
   provisioner "local-exec" {
+    command = "helm repo add bitnami https://charts.bitnami.com/bitnami"
+  }
+
+  provisioner "local-exec" {
     command = "helm repo update"
   }
 }

@@ -1,0 +1,17 @@
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: woocommerce-vs
+spec:
+  hosts:
+  - "woocomm.cloudhero.io"
+  gateways:
+  - woocommerce-gw
+  http:
+  - route:
+    - destination:
+        host: woocommerce-wordpress.default.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
