@@ -13,8 +13,6 @@ datasources:
       access: proxy
       isDefault: false
 
-adminPassword: admin#123!
-
 dashboardProviders:
  dashboardproviders.yaml:
    apiVersion: 1

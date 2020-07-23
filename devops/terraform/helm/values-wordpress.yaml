@@ -4,11 +4,10 @@ image:
   tag: 4.3.0
 
 wordpressUsername: wordpress
-wordpressPassword: wordpress
-wordpressEmail: user@cloudhero.io
+wordpressEmail: user@test.io
 wordpressFirstName: The
-wordpressLastName: CloudHero
-wordpressBlogName: CloudHero's Blog!
+wordpressLastName: Test
+wordpressBlogName: Test's Blog!
 
 
 replicaCount: 1
@@ -28,7 +27,6 @@ mariadb:
 externalDatabase:
   host: mysql
   user: wordpress
-  password: "wordpress"
   database: wordpress
 
 metrics:

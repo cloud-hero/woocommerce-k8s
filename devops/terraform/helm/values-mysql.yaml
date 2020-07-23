@@ -2,7 +2,4 @@ imageTag: "8"
 metrics:
   enabled: true
 mysqlUser: "wordpress"
-mysqlPassword: "wordpress"
 mysqlDatabase: "wordpress"
-mysqlRootPassword: "root"
-mysqlAllowEmptyPassword: true
