@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: woocomm-testing
+  namespace: jobs
+spec:
+  parallelism: 10
+  template:
+    metadata:
+      labels:
+        component: woocom-testing
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: woocomm-testing
+        image: cloudhero/woocomm-scrapy
+        imagePullPolicy: Always
+        command: ["/bin/sh", "-c"]
+        args: ["cd woocommerce && while true; do scrapy crawl woocommspider; done"]
+        workingDir: /usr/local/src
