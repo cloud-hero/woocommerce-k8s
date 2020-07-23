@@ -75,5 +75,6 @@ resource "helm_release" "woocommerce" {
 
   depends_on = [
     google_container_node_pool.primary_nodes,
+    helm_release.nfs-server,
   ]
 }
