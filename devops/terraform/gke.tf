@@ -39,6 +39,10 @@ resource "google_container_node_pool" "primary_nodes" {
   name       = "${google_container_cluster.primary.name}-node-pool"
   location   = var.region
   cluster    = google_container_cluster.primary.name
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 2
+  }
   node_count = var.gke_num_nodes
 
   node_config {
