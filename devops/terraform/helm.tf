@@ -4,7 +4,7 @@ resource "helm_release" "nfs-server" {
   values = [file("helm/values-nfs-server.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -14,7 +14,7 @@ resource "helm_release" "mysql" {
   values = [file("helm/values-mysql.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -24,7 +24,7 @@ resource "helm_release" "prometheus" {
   values = [file("helm/values-prometheus.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -34,7 +34,7 @@ resource "helm_release" "grafana" {
   values = [file("helm/values-grafana.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -44,7 +44,7 @@ resource "helm_release" "elasticsrarch" {
   values = [file("helm/values-elasticsearch.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -54,7 +54,7 @@ resource "helm_release" "kibana" {
   values = [file("helm/values-kibana.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -64,7 +64,7 @@ resource "helm_release" "filebeat" {
   values = [file("helm/values-filebeat.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
   ]
 }
 
@@ -74,7 +74,7 @@ resource "helm_release" "woocommerce" {
   values = [file("helm/values-wordpress.yaml")]
 
   depends_on = [
-    google_container_node_pool.primary_nodes,
+    null_resource.helm_repo,
     helm_release.nfs-server,
   ]
 }

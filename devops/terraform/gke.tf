@@ -39,10 +39,12 @@ resource "google_container_node_pool" "primary_nodes" {
   name       = "${google_container_cluster.primary.name}-node-pool"
   location   = var.region
   cluster    = google_container_cluster.primary.name
+
   autoscaling {
     min_node_count = 1
     max_node_count = 2
   }
+
   node_count = var.gke_num_nodes
 
   node_config {
@@ -67,21 +69,7 @@ resource "google_container_node_pool" "primary_nodes" {
     command = "gcloud container clusters get-credentials ${var.project_id}-gke --region europe-west3"
   }
 
-  provisioner "local-exec" {
-    command = "helm repo add stable https://kubernetes-charts.storage.googleapis.com"
-  }
 
-  provisioner "local-exec" {
-    command = "helm repo add elastic https://helm.elastic.co"
-  }
-
-  provisioner "local-exec" {
-    command = "helm repo add bitnami https://charts.bitnami.com/bitnami"
-  }
-
-  provisioner "local-exec" {
-    command = "helm repo update"
-  }
 }
 
 output "kubernetes_cluster_name" {
