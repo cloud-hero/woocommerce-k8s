@@ -7,3 +7,7 @@ resource "null_resource" "set_cluster" {
     google_container_node_pool.primary_nodes,
   ]
 }
+
+output "set_cluster" {
+  value = null_resource.set_cluster.id
+}

@@ -15,7 +15,8 @@ resource "null_resource" "helm_repo" {
     command = "helm repo update"
   }
 
+# Used to force dependency on GKE cluster.
   depends_on = [
-    null_resource.set_cluster,
+    var.module_depends_on
   ]
 }

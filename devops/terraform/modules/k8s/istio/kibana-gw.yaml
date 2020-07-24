@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: kibana-gw
+  namespace: logging
 spec:
   selector:
     istio: ingressgateway
@@ -11,4 +12,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - kibana.cloudhero.io
+    - kibana.test.com

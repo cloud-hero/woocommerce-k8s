@@ -3,9 +3,10 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: woocommerce-vs
+  namespace: woocomm
 spec:
   hosts:
-  - "woocomm.cloudhero.io"
+  - "woocomm.test.com"
   gateways:
   - woocommerce-gw
   http:
