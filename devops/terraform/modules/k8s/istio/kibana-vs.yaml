@@ -12,7 +12,7 @@ spec:
   http:
   - route:
     - destination:
-        host: kibana-kibana.default.svc.cluster.local
+        host: kibana-kibana.logging.svc.cluster.local
         port:
           number: 5601
       weight: 100

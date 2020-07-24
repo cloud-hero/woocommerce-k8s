@@ -12,7 +12,7 @@ spec:
   http:
   - route:
     - destination:
-        host: woocommerce-wordpress.default.svc.cluster.local
+        host: woocommerce-wordpress.woocomm.svc.cluster.local
         port:
           number: 80
       weight: 100

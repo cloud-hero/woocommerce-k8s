@@ -11,7 +11,7 @@ spec:
   http:
   - route:
     - destination:
-        host: grafana.default.svc.cluster.local
+        host: grafana.monitoring.svc.cluster.local
         port:
           number: 80
       weight: 100
