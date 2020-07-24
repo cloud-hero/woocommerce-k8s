@@ -42,11 +42,4 @@ resource "google_container_node_pool" "primary_nodes" {
   provisioner "local-exec" {
     command = "gcloud container clusters get-credentials ${var.project_id}-gke --region europe-west3"
   }
-
-
-}
-
-output "kubernetes_cluster_name" {
-  value       = google_container_cluster.primary.name
-  description = "GKE Cluster Name"
 }
