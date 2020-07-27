@@ -25,6 +25,7 @@ resource "google_container_node_pool" "primary_nodes" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/devstorage.read_write",
     ]
 
     labels = {
@@ -36,6 +37,7 @@ resource "google_container_node_pool" "primary_nodes" {
     tags         = ["gke-node", "${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
+      ssh-keys = "${var.gce_ssh_user}:${file(var.gce_ssh_pub_key_file)}"
     }
   }
 
@@ -43,3 +45,16 @@ resource "google_container_node_pool" "primary_nodes" {
     command = "gcloud container clusters get-credentials ${var.project_id}-gke --region europe-west3"
   }
 }
+
+resource "google_compute_firewall" "primary_node_firewall" {
+  name    = "${google_container_cluster.primary.name}-firewall"
+  network = google_compute_network.vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  target_tags = ["gke-node"]
+}
+

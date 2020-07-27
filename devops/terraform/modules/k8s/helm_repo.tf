@@ -12,6 +12,10 @@ resource "null_resource" "helm_repo" {
   }
 
   provisioner "local-exec" {
+    command = "helm repo add gitlab https://charts.gitlab.io"
+  }
+
+  provisioner "local-exec" {
     command = "helm repo update"
   }
 

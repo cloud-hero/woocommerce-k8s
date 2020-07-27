@@ -4,9 +4,11 @@ provider "google" {
 }
 
 module "gce" {
-    source     = "./modules/gce"
-    region     = var.region
-    project_id = var.project_id
+    source                  = "./modules/gce"
+    region                  = var.region
+    project_id              = var.project_id
+    gce_ssh_pub_key_file    = var.gce_ssh_pub_key_file
+    gce_ssh_user            = var.gce_ssh_user
 }
 
 module "k8s" {
