@@ -8,6 +8,23 @@ resource "helm_release" "nfs-server" {
   ]
 }
 
+resource "helm_release" "gitlab" {
+  name      = "gitlab-runner"
+  namespace = "gitlab"
+  chart     = "gitlab/gitlab-runner"
+  values    = [file("modules/k8s/helm/values-gitlab.yaml")]
+
+  set {
+      name  = "runnerRegistrationToken"
+      value = var.gitlab_token
+  }
+
+  depends_on = [
+    null_resource.helm_repo,
+    null_resource.gitlab_ns,
+  ]
+}
+
 resource "helm_release" "mysql" {
   name      = "mysql"
   namespace = "woocomm"

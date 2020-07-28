@@ -13,3 +13,7 @@ variable "gce_ssh_pub_key_file" {
 variable "gce_ssh_user" {
     type = string
 }
+
+variable "gitlab_token" {
+  description = "Gitlab Token"
+}

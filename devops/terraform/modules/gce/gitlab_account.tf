@@ -25,3 +25,14 @@ resource "google_service_account_iam_policy" "admin-account-iam" {
   service_account_id = google_service_account.gitlab_service_account.name
   policy_data        = data.google_iam_policy.container_registry.policy_data
 }
+
+resource "google_service_account_key" "gitlab_service_account_key" {
+  service_account_id = google_service_account.gitlab_service_account.name
+  public_key_type    = "TYPE_X509_PEM_FILE"
+}
+
+resource "local_file" "file" {
+  content         = base64decode(google_service_account_key.gitlab_service_account_key.private_key)
+  filename        = "${path.root}/gitlab_sa.key"
+  file_permission = "0600"
+}

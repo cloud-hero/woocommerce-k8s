@@ -15,6 +15,7 @@ module "k8s" {
     source            = "./modules/k8s"
 # Used to force dependency on GKE cluster.
     module_depends_on = module.gce.set_cluster
+    gitlab_token      = var.gitlab_token
 }
 
 output "wp_admin_pass" {

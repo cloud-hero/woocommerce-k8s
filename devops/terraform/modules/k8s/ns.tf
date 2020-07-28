@@ -41,3 +41,14 @@ resource "null_resource" "jobs_ns" {
     var.module_depends_on
   ]
 }
+
+resource "null_resource" "gitlab_ns" {
+  provisioner "local-exec" {
+    command = "kubectl create ns gitlab"
+  }
+
+# Used to force dependency on GKE cluster.
+  depends_on = [
+    var.module_depends_on
+  ]
+}
